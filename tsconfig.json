@@ -7,7 +7,14 @@
     "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "src",
-    "paths": {}
+    "paths": {
+      "constants/*": ["common/constants/*"],
+      "utils/*": ["common/utils/*"],
+      "styles/*": ["common/styles/*"],
+      "typings/*": ["common/typings/*"],
+      "context/*": ["context/*"],
+      "themes/*": ["themes/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

@@ -1,5 +1,13 @@
 import React from 'react';
 
-const App = () => <h1>Exchange app</h1>;
+import ThemeProvider from 'context/Theme';
+import GlobalStyles from 'styles/globalStyles';
+
+const App = () => (
+  <ThemeProvider>
+    <GlobalStyles />
+    <h1>Exchange app</h1>
+  </ThemeProvider>
+);
 
 export default App;

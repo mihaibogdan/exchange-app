@@ -25,7 +25,14 @@ const options = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     modules: ['src', 'node_modules'],
-    alias: {},
+    alias: {
+      constants: 'common/constants',
+      utils: 'common/utils',
+      styles: 'common/styles',
+      typings: 'common/typings',
+      themes: 'themes',
+      context: 'context',
+    },
   },
   module: {
     rules: [
