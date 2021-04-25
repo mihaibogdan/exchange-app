@@ -11,8 +11,7 @@ enum VarianMappings {
 
 export interface IProps {
   variant?: keyof typeof VarianMappings;
-  color?: 'primary' | 'secondary' | 'text';
-  shade?: 'main' | 'light';
+  color?: 'primary' | 'secondary' | 'text' | 'error';
   className?: string;
   children: React.ReactNode;
 }
@@ -20,16 +19,15 @@ export interface IProps {
 const Typography = ({
   variant = 'body',
   color = 'text',
-  shade = 'main',
   className = '',
   children,
   ...props
 }: IProps) => {
   const tag = VarianMappings[variant] ? VarianMappings[variant] : 'p';
-  const classes = clsx(className, variant, `color-${color}`, `shade-${shade}`);
+  const classes = clsx(className, variant, `color-${color}`);
 
   return (
-    <T className={classes} as={tag} color={color} shade={shade} {...props}>
+    <T className={classes} as={tag} color={color} {...props}>
       {children}
     </T>
   );

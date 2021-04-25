@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    font-family: 'Roboto',
+    font-family: ${({ theme }) => theme.typography.fontFamily};
   }
 
   #root {

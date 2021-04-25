@@ -22,6 +22,10 @@ export interface ITheme {
       main: string;
       light: string;
     };
+    error: {
+      main: string;
+    };
+    border: string;
   };
   typography: {
     fontFamily: string;

@@ -1,6 +1,5 @@
 import { Theme, ITheme } from 'common/types/theme';
 
-const backgroundColor = (alpha = 1) => `rgba(33, 33, 36, ${alpha})`;
 const primaryColor = (alpha = 1) => `rgba(53, 110, 255, ${alpha})`;
 const secondaryColor = (alpha = 1) => `rgba(255, 255, 255, ${alpha})`;
 const textColor = (alpha = 1) => `rgba(255, 255, 255, ${alpha})`;
@@ -9,12 +8,12 @@ const dark: ITheme = {
   type: Theme.Dark,
   palette: {
     background: {
-      main: backgroundColor(),
-      light: 'rgba(255, 255, 255, 0.04)',
+      main: 'rgba(33, 33, 36)',
+      light: '#2A2A2D',
     },
     primary: {
       main: primaryColor(),
-      light: backgroundColor(0.24),
+      light: primaryColor(0.24),
     },
     secondary: {
       main: secondaryColor(),
@@ -24,6 +23,10 @@ const dark: ITheme = {
       main: textColor(),
       light: textColor(0.6),
     },
+    error: {
+      main: '#FF3636',
+    },
+    border: '#FFF',
   },
   typography: {
     fontFamily: '"Noto Sans", sans-serif',

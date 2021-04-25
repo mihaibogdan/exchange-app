@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IProps } from './Typography';
 
 export default styled.p<IProps>`
-  color: ${props => props.theme.palette[props.color][props.shade]};
+  color: ${props => props.theme.palette[props.color].main};
   margin: 0;
 
   &.h1 {

@@ -31,15 +31,5 @@ describe('Typography', () => {
 
       expect(typography.find('p').hasClass('color-primary')).toBeTruthy();
     });
-
-    it('should be able to accept a shade prop', () => {
-      const typography = mountWithTheme(
-        <Typography color="primary" shade="light">
-          Typography!
-        </Typography>
-      );
-
-      expect(typography.find('p').hasClass('shade-light')).toBeTruthy();
-    });
   });
 });

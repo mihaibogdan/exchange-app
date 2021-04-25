@@ -9,3 +9,8 @@ export enum ExchangeType {
   Buy = 'buy',
   Sell = 'sell',
 }
+
+export enum ExchangeAccountType {
+  Buyer = 'buyer',
+  Seller = 'seller',
+}
