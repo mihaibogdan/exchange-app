@@ -18,7 +18,7 @@ export const Button = styled.button`
 
     &.color-primary {
       background-color: ${props => props.theme.palette.primary.main};
-      color: ${props => props.theme.palette.text.main};
+      color: #fff;
     }
   }
 
