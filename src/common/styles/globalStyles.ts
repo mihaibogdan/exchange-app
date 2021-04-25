@@ -5,13 +5,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Roboto',
+    font-family: ${({ theme }) => theme.typography.fontFamily};
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: ${({ theme }) => theme.palette.background};
-    color: ${({ theme }) => theme.palette.text};
+    background-color: ${({ theme }) => theme.palette.background.main};
+    color: ${({ theme }) => theme.palette.text.main};
   }
 
   button {

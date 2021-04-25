@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ size: number }>`
   display: inline-block;
   width: ${({ size }) => `${size}px`};
   height: ${({ size }) => `${size}px`};

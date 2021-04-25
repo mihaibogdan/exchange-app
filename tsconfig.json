@@ -8,10 +8,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "src",
     "paths": {
-      "constants/*": ["common/constants/*"],
-      "utils/*": ["common/utils/*"],
-      "styles/*": ["common/styles/*"],
-      "typings/*": ["common/typings/*"],
+      "common/*": ["common/*"],
       "context/*": ["context/*"],
       "themes/*": ["themes/*"]
     }

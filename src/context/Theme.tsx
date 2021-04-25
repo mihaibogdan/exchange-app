@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { getDefaultTheme } from 'utils/theme';
-import { THEME } from 'constants/theme';
+import { getDefaultTheme } from 'common/utils/theme';
+import { THEME } from 'common/constants/theme';
 import { Theme, ITheme } from 'common/types/theme';
 import { dark, light } from 'themes';
 

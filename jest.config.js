@@ -13,12 +13,7 @@ module.exports = {
 
   moduleNameMapper: {
     '\\.svg': 'svgr/webpack',
-    '^constants/(.*)$': '<rootDir>/src/common/constants/$1',
-    '^utils(.*)$': '<rootDir>/src/common/utils$1',
-    '^styles(.*)$': '<rootDir>/src/common/styles$1',
-    '^typings(.*)$': '<rootDir>/src/common/typings$1',
-    '^themes(.*)$': '<rootDir>/src/themes$1',
-    '^context(.*)$': '<rootDir>/src/context$1',
+    '^common(.*)$': '<rootDir>/src/common$1',
   },
 
   // An array of absolute paths to additional locations to search when resolving modules

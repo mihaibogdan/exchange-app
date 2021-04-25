@@ -4,8 +4,8 @@ interface IProps {
   children: React.ReactNode;
 }
 
-function Button({ children }: IProps) {
+const Button = ({ children }: IProps) => {
   return <button>{children}</button>;
-}
+};
 
 export default Button;

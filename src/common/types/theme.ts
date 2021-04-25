@@ -6,9 +6,24 @@ export enum Theme {
 export interface ITheme {
   type: Theme;
   palette: {
-    background: string;
-    primary: string;
-    secondary: string;
-    text: string;
+    background: {
+      main: string;
+      light: string;
+    };
+    primary: {
+      main: string;
+      light: string;
+    };
+    secondary: {
+      main: string;
+      light: string;
+    };
+    text: {
+      main: string;
+      light: string;
+    };
+  };
+  typography: {
+    fontFamily: string;
   };
 }

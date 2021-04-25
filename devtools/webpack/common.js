@@ -26,10 +26,7 @@ const options = {
     extensions: ['.js', '.ts', '.tsx'],
     modules: ['src', 'node_modules'],
     alias: {
-      constants: 'common/constants',
-      utils: 'common/utils',
-      styles: 'common/styles',
-      typings: 'common/typings',
+      common: 'common',
       themes: 'themes',
       context: 'context',
     },

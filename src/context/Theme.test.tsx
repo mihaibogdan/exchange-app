@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
 
 import { ITheme, Theme } from 'common/types/theme';
-import { THEME } from 'constants/theme';
+import { THEME } from 'common/constants/theme';
 import ThemeContextProvider from './Theme';
 
 beforeEach(() => window.localStorage.clear());

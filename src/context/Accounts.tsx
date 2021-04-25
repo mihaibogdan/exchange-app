@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { IAccount } from 'utils/account';
 
+import { IAccount } from 'common/utils/account';
 interface IProps {
   children: React.ReactNode;
 }

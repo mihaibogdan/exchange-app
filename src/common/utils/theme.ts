@@ -1,5 +1,5 @@
 import { Theme } from 'common/types/theme';
-import { THEME } from 'constants/theme';
+import { THEME } from 'common/constants/theme';
 
 export const getDefaultTheme = (): Theme => {
   if (localStorage.getItem(THEME)) return <Theme>localStorage.getItem(THEME);
