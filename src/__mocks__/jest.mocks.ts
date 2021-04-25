@@ -10,8 +10,8 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-var localStorageMock = (function () {
-  var store = {};
+const localStorageMock = (function () {
+  let store = {};
 
   return {
     getItem: function (key) {

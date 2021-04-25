@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
-import { IAccount } from 'common/utils/account';
+import { IAccount } from 'common/types/account';
 interface IProps {
   children: React.ReactNode;
 }
@@ -39,17 +39,9 @@ const bankAccounts: IAccount[] = [
 export const AccountsContext = React.createContext(null);
 
 const AccountsContextProvider = ({ children }: IProps) => {
-  const [accounts, setAccounts] = useState<IAccount[]>(bankAccounts);
+  const [accounts] = useState<IAccount[]>(bankAccounts);
 
-  const exchange = useCallback(
-    (
-      source: IAccount,
-      destination: IAccount,
-      amount: number,
-      rate: number
-    ): void => {},
-    [accounts]
-  );
+  const exchange = useCallback((): void => {}, [accounts]);
 
   const contextValue = useMemo(
     () => ({
