@@ -19,6 +19,7 @@ export const AccountButton = styled(Button)`
   font-size: 40px;
   display: flex;
   align-items: center;
+  margin-right: 20px;
 `;
 
 export const BalanceButton = styled(Button)`
@@ -30,9 +31,10 @@ export const BalanceButton = styled(Button)`
 `;
 
 export const NumberInput = styled(NumberFormat)`
+  min-width: 0;
   background-color: transparent;
-  text-align: right;
-  border: none;
-  font-size: 40px;
   color: inherit;
+  border: none;
+  text-align: right;
+  font-size: 40px;
 `;
