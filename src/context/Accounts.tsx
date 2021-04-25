@@ -5,6 +5,11 @@ interface IProps {
   children: React.ReactNode;
 }
 
+export interface IAccountsContext {
+  accounts: IAccount[];
+  exchange: () => void;
+}
+
 const bankAccounts: IAccount[] = [
   {
     id: '239fc813-fd0e-45a2-a3cc-4b8007ac2318',
@@ -41,9 +46,9 @@ export const AccountsContext = React.createContext(null);
 const AccountsContextProvider = ({ children }: IProps) => {
   const [accounts] = useState<IAccount[]>(bankAccounts);
 
-  const exchange = useCallback((): void => {}, [accounts]);
+  const exchange = useCallback(() => {}, [accounts]);
 
-  const contextValue = useMemo(
+  const contextValue = useMemo<IAccountsContext>(
     () => ({
       accounts,
       exchange,

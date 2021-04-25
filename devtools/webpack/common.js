@@ -27,8 +27,9 @@ const options = {
     modules: ['src', 'node_modules'],
     alias: {
       common: 'common',
-      themes: 'themes',
       context: 'context',
+      pages: 'pages',
+      themes: 'themes',
     },
   },
   module: {

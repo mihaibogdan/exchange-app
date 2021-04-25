@@ -4,3 +4,8 @@ export interface IRates {
     [key: string]: number;
   };
 }
+
+export enum ExchangeType {
+  Buy = 'buy',
+  Sell = 'sell',
+}

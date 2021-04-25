@@ -1,10 +1,13 @@
 import React, { useState, useMemo } from 'react';
 
 import useInterval from 'common/hooks/useInterval';
-import { IRates } from 'common/types/rates';
+import { IRates } from 'common/types/exchanges';
 
 interface IProps {
   children: React.ReactNode;
+}
+export interface IExchangeRatesContext {
+  exchangeRates: IRates;
 }
 
 export const ExchangeRatesContext = React.createContext(null);

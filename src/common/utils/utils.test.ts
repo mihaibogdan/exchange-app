@@ -1,4 +1,4 @@
-import { IRates } from 'common/types/rates';
+import { IRates } from 'common/types/exchanges';
 
 import { exchange } from './exchangeRates';
 

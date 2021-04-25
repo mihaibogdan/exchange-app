@@ -1,4 +1,4 @@
-import { IRates } from 'common/types/rates';
+import { IRates } from 'common/types/exchanges';
 
 /**
  * We only have exchange rates relative to a single currency, so any exchange between two currency
