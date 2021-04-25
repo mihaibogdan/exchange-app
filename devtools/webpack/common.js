@@ -45,6 +45,10 @@ const options = {
           formatter,
         },
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
   plugins: [

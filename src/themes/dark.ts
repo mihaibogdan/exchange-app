@@ -1,4 +1,4 @@
-import { Theme, ITheme } from 'typings/theme';
+import { Theme, ITheme } from 'common/types/theme';
 
 const dark: ITheme = {
   type: Theme.Dark,

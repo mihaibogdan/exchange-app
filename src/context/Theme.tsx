@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { getDefaultTheme } from 'utils/theme';
 import { THEME } from 'constants/theme';
-import { Theme, ITheme } from 'typings/theme';
+import { Theme, ITheme } from 'common/types/theme';
 import { dark, light } from 'themes';
 
 interface IProps {

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
-import ThemeContextProvider from './Theme';
-import { ITheme, Theme } from 'typings/theme';
+
+import { ITheme, Theme } from 'common/types/theme';
 import { THEME } from 'constants/theme';
+import ThemeContextProvider from './Theme';
 
 beforeEach(() => window.localStorage.clear());
 

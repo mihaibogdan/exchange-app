@@ -12,6 +12,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
 
   moduleNameMapper: {
+    '\\.svg': 'svgr/webpack',
     '^constants/(.*)$': '<rootDir>/src/common/constants/$1',
     '^utils(.*)$': '<rootDir>/src/common/utils$1',
     '^styles(.*)$': '<rootDir>/src/common/styles$1',

@@ -1,5 +1,6 @@
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { merge } = require('webpack-merge');
+
 const common = require('./common.js');
 
 const devConfig = merge(common, {

@@ -1,4 +1,4 @@
-import { Theme } from 'typings/theme';
+import { Theme } from 'common/types/theme';
 import { THEME } from 'constants/theme';
 
 export const getDefaultTheme = (): Theme => {
