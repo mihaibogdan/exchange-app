@@ -31,4 +31,8 @@ export const DirectionButton = styled(Button)`
   && {
     border: solid 7px ${({ theme }) => theme.palette.background.main};
   }
+
+  &&:hover {
+    background-color: ${({ theme }) => theme.palette.background.light};
+  }
 `;

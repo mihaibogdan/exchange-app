@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NumberFormatValues } from 'react-number-format';
 import ArrowDropDownIcon from 'remixicon-react/ArrowDropDownLineIcon';
 
@@ -6,15 +6,17 @@ import { IAccount } from 'common/types/account';
 import { ExchangeAccountType } from 'common/types/exchanges';
 import { Row } from 'common/styles/layout';
 import { formatNumber } from 'common/utils/numbers';
+import Typography from 'common/components/Typography';
+import CurrencyModal from 'common/components/CurrencyModal';
 import { Wrapper, AccountButton, BalanceButton, NumberInput } from './styled';
-import Typography from '../Typography';
 
 interface IProps {
-  className?: string;
   account: IAccount;
   value: string;
   type: ExchangeAccountType;
   onValueChange?: (value: string) => void;
+  onAccountChange?: (account: IAccount) => void;
+  className?: string;
 }
 
 const ExchangeInput = ({
@@ -22,12 +24,18 @@ const ExchangeInput = ({
   value,
   type,
   onValueChange,
+  onAccountChange,
   className = '',
 }: IProps) => {
+  const [isChangingCurrency, setIsChangingCurrency] = useState(false);
+
   return (
     <Wrapper className={className}>
       <Row spaceBetween>
-        <AccountButton variant="empty">
+        <AccountButton
+          variant="empty"
+          onClick={() => setIsChangingCurrency(true)}
+        >
           {account.currency} <ArrowDropDownIcon />
         </AccountButton>
         <NumberInput
@@ -58,6 +66,15 @@ const ExchangeInput = ({
           </Typography>
         )}
       </Row>
+      <CurrencyModal
+        isOpen={isChangingCurrency}
+        onClose={() => setIsChangingCurrency(false)}
+        selectedAccount={account}
+        onSelectAccount={(newAccount: IAccount) => {
+          onAccountChange(newAccount);
+          setIsChangingCurrency(false);
+        }}
+      />
     </Wrapper>
   );
 };

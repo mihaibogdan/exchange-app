@@ -17,8 +17,13 @@ export const Button = styled.button`
     border-radius: 80px;
 
     &.color-primary {
-      background-color: ${props => props.theme.palette.primary.main};
+      background-color: ${({ theme }) => theme.palette.primary.main};
       color: #fff;
+    }
+
+    &.color-secondary {
+      background-color: ${({ theme }) => theme.palette.secondary.main};
+      color: ${({ theme }) => theme.palette.secondary.contrast};
     }
   }
 
@@ -35,6 +40,17 @@ export const Button = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+
+    transition: background-color 250ms cubic-bezier(0, 0, 0.2, 1);
+
+    &.small {
+      width: 48px;
+      height: 48px;
+    }
+
+    &:hover {
+      background-color: ${({ theme }) => theme.palette.hover};
+    }
   }
 
   &:focus-visible {

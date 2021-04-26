@@ -1,7 +1,7 @@
 import { Theme, ITheme } from 'common/types/theme';
 
 const primaryColor = (alpha = 1) => `rgba(53, 110, 255, ${alpha})`;
-const secondaryColor = (alpha = 1) => `rgba(255, 255, 255, ${alpha})`;
+const secondaryColor = (alpha = 1) => `rgba(33, 33, 36, ${alpha})`;
 const textColor = (alpha = 1) => `rgba(33, 33, 36, ${alpha})`;
 
 const light: ITheme = {
@@ -18,6 +18,7 @@ const light: ITheme = {
     secondary: {
       main: secondaryColor(),
       light: secondaryColor(0.24),
+      contrast: 'rgba(255, 255, 255)',
     },
     text: {
       main: textColor(),
@@ -27,6 +28,7 @@ const light: ITheme = {
       main: '#FF3636',
     },
     border: '#000',
+    hover: 'rgba(0, 0, 0, 0.06)',
   },
   typography: {
     fontFamily: '"Noto Sans", sans-serif',

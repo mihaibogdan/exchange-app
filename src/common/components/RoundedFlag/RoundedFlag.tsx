@@ -27,16 +27,14 @@ const RoundedFlag = ({ country, size = 60 }: IProps) => {
     importFlag();
   }, [country]);
 
-  if (!isLoading && ImportedIconRef.current) {
-    const { current: ImportedIcon } = ImportedIconRef;
-    return (
-      <Wrapper size={size}>
+  const { current: ImportedIcon } = ImportedIconRef;
+  return (
+    <Wrapper size={size}>
+      {!isLoading && ImportedIconRef.current ? (
         <ImportedIcon className="flag" height={size} />
-      </Wrapper>
-    );
-  }
-
-  return null;
+      ) : null}
+    </Wrapper>
+  );
 };
 
 export default RoundedFlag;

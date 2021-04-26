@@ -18,6 +18,7 @@ const dark: ITheme = {
     secondary: {
       main: secondaryColor(),
       light: secondaryColor(0.24),
+      contrast: 'rgba(33, 33, 36)',
     },
     text: {
       main: textColor(),
@@ -27,6 +28,7 @@ const dark: ITheme = {
       main: '#FF3636',
     },
     border: '#FFF',
+    hover: 'rgba(255, 255, 255, 0.06)',
   },
   typography: {
     fontFamily: '"Noto Sans", sans-serif',

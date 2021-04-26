@@ -17,6 +17,7 @@ export interface ITheme {
     secondary: {
       main: string;
       light: string;
+      contrast: string;
     };
     text: {
       main: string;
@@ -26,6 +27,7 @@ export interface ITheme {
       main: string;
     };
     border: string;
+    hover: string;
   };
   typography: {
     fontFamily: string;
