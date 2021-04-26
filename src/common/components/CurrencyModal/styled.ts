@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
     margin-top: 40px;
     font-weight: normal;
   }
+
+  @media only screen and (max-device-width: 736px) {
+    width: 100%;
+    padding: 20px 10px;
+  }
 `;
 
 export const CurrenciesList = styled.div`
@@ -23,7 +28,7 @@ export const CurrenciesList = styled.div`
   border-radius: 8px;
   overflow: hidden;
 
-  max-height: 370px;
+  max-height: 462px;
   overflow-y: scroll;
 `;
 

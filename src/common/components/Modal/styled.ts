@@ -42,4 +42,9 @@ export const CloseButton = styled(Button)`
   position: absolute;
   right: 70px;
   top: 40px;
+
+  @media only screen and (max-device-width: 736px) {
+    right: 10px;
+    top: 10px;
+  }
 `;
