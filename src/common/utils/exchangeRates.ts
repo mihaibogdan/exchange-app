@@ -9,14 +9,15 @@ export const exchange = (
   amount: number,
   source: string,
   destination: string,
-  exchangeRates: IRates
-): number => {
+  exchangeRates: IRates,
+  decimals = 2
+): string => {
   const { rates } = exchangeRates;
-  if (!rates[source] || !rates[destination]) return amount;
-  if (source === destination) return amount;
+  if (!rates[source] || !rates[destination]) return amount.toString();
+  if (source === destination) return amount.toString();
 
   const baseAmount = amount / rates[source];
   const finalAmount = baseAmount * rates[destination];
 
-  return finalAmount;
+  return finalAmount.toFixed(decimals);
 };

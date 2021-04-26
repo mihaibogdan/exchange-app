@@ -53,11 +53,11 @@ const ExchangeWidget = ({
     return false;
   }, [main, secondary, type]);
 
-  const onChangeMainValue = (value: number) => {
+  const onChangeMainValue = (value: string) => {
     dispatch(changeMainValue(value, exchangeRates));
   };
 
-  const onChangeSecondaryValue = (value: number) => {
+  const onChangeSecondaryValue = (value: string) => {
     dispatch(changeSecondaryValue(value, exchangeRates));
   };
 
@@ -75,8 +75,9 @@ const ExchangeWidget = ({
           1,
           main.account.currency,
           secondary.account.currency,
-          exchangeRates
-        ).toFixed(4)} ${secondary.account.currencySymbol}`}
+          exchangeRates,
+          4
+        )} ${secondary.account.currencySymbol}`}
       </Typography>
 
       <InputsArea>
@@ -108,7 +109,11 @@ const ExchangeWidget = ({
       <Button
         variant="contained"
         color="primary"
-        disabled={exceedsBalance}
+        disabled={
+          exceedsBalance ||
+          Number.parseFloat(main.value) === 0 ||
+          isNaN(Number.parseFloat(main.value))
+        }
         className="exchange-button"
       >
         {`${type === ExchangeType.Sell ? 'Sell' : 'Buy'} ${

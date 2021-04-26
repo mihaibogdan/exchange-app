@@ -20,13 +20,18 @@ function CHANGE_MAIN_VALUE(
   payload: { body: { value: number; exchangeRates: IRates } }
 ) {
   const { value, exchangeRates } = payload.body;
+  if (!value) {
+    nextState.main.value = '';
+    nextState.secondary.value = '';
+    return;
+  }
+
   const exchangedValue = exchange(
     value,
     nextState.main.account.currency,
     nextState.secondary.account.currency,
     exchangeRates
-  ).toFixed(2);
-
+  );
   nextState.main.value = value;
   nextState.secondary.value = exchangedValue;
 }
@@ -36,12 +41,18 @@ function CHANGE_SECONDARY_VALUE(
   payload: { body: { value: number; exchangeRates: IRates } }
 ) {
   const { value, exchangeRates } = payload.body;
+  if (!value) {
+    nextState.main.value = '';
+    nextState.secondary.value = '';
+    return;
+  }
+
   const exchangedValue = exchange(
     value,
     nextState.secondary.account.currency,
     nextState.main.account.currency,
     exchangeRates
-  ).toFixed(2);
+  );
 
   nextState.main.value = exchangedValue;
   nextState.secondary.value = value;

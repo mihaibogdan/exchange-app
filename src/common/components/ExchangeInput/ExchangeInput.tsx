@@ -12,9 +12,9 @@ import Typography from '../Typography';
 interface IProps {
   className?: string;
   account: IAccount;
-  value: number;
+  value: string;
   type: ExchangeAccountType;
-  onValueChange?: (value: number) => void;
+  onValueChange?: (value: string) => void;
 }
 
 const ExchangeInput = ({
@@ -37,19 +37,22 @@ const ExchangeInput = ({
           thousandSeparator
           placeholder={`0 ${account.currencySymbol}`}
           allowNegative={false}
+          decimalScale={2}
           onValueChange={(values: NumberFormatValues) => {
-            onValueChange(Math.abs(values.floatValue));
+            let newValue = values.value;
+            if (newValue[0] === '-') newValue = newValue.substr(1);
+            if (value !== newValue) onValueChange(newValue);
           }}
         />
       </Row>
       <Row spaceBetween>
         <BalanceButton
           variant="empty"
-          onClick={() => onValueChange(account.balance)}
+          onClick={() => onValueChange(account.balance.toFixed(2))}
         >
           Balance: {formatNumber(account.balance)} {account.currencySymbol}
         </BalanceButton>
-        {value > account.balance && type === ExchangeAccountType.Seller && (
+        {+value > account.balance && type === ExchangeAccountType.Seller && (
           <Typography variant="caption" color="error" className="error">
             exceeds balance
           </Typography>
