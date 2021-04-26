@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import CloseIcon from 'remixicon-react/CloseLineIcon';
@@ -10,13 +10,31 @@ interface IProps {
   children: React.ReactNode;
 }
 
+const TIMEOUT = 250;
+
 const Modal = ({ isOpen, onClose, children }: IProps) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
+
+  useEffect(() => {
+    if (isOpen !== internalIsOpen) setInternalIsOpen(isOpen);
+  }, [isOpen]);
+
+  const closeModal = () => {
+    setInternalIsOpen(false);
+    setTimeout(onClose, TIMEOUT);
+  };
+
   return ReactDOM.createPortal(
-    <CSSTransition in={isOpen} classNames="grow" unmountOnExit timeout={250}>
+    <CSSTransition
+      in={internalIsOpen}
+      classNames="grow"
+      unmountOnExit
+      timeout={TIMEOUT}
+    >
       <ModalWithTransition>
         <Container>
           {children}
-          <CloseButton variant="icon" small onClick={onClose}>
+          <CloseButton variant="icon" small onClick={closeModal}>
             <CloseIcon />
           </CloseButton>
         </Container>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo } from 'react';
+import React, { useState, useContext, useMemo, useEffect } from 'react';
 import CheckIcon from 'remixicon-react/CheckLineIcon';
 import clsx from 'clsx';
 
@@ -28,6 +28,8 @@ const CurrencyModal = ({
 }: IProps) => {
   const { accounts } = useContext<IAccountsContext>(AccountsContext);
   const [searchTerm, setSearchTerm] = useState('');
+  const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
+
   const [
     internalSelectedAccount,
     setInternalSelectedAccount,
@@ -38,8 +40,18 @@ const CurrencyModal = ({
     return searchList(accounts, searchTerm, ['currency', 'currencyName']);
   }, [accounts, searchTerm]);
 
+  useEffect(() => {
+    if (!isOpen) setSearchTerm('');
+    if (isOpen !== internalIsOpen) setInternalIsOpen(isOpen);
+  }, [isOpen]);
+
+  const closeModal = () => {
+    setInternalIsOpen(false);
+    setTimeout(onClose, 250);
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={internalIsOpen} onClose={closeModal}>
       <Wrapper>
         <SearchInput
           value={searchTerm}
@@ -98,7 +110,10 @@ const CurrencyModal = ({
         <Button
           variant="contained"
           color="secondary"
-          onClick={() => onSelectAccount(internalSelectedAccount)}
+          onClick={() => {
+            onSelectAccount(internalSelectedAccount);
+            closeModal();
+          }}
         >
           {internalSelectedAccount.currency} -{' '}
           {internalSelectedAccount.currencyName}

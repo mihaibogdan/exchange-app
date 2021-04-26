@@ -72,7 +72,6 @@ const ExchangeInput = ({
         selectedAccount={account}
         onSelectAccount={(newAccount: IAccount) => {
           onAccountChange(newAccount);
-          setIsChangingCurrency(false);
         }}
       />
     </Wrapper>
