@@ -5,6 +5,7 @@ import StoreProvider from 'context/Store';
 import ExchangeRatesProvider from 'context/ExchangeRates';
 import GlobalStyles from 'common/styles/globalStyles';
 
+import Settings from 'common/components/Settings';
 import Exchanges from 'pages/Exchanges';
 
 const App = () => (
@@ -16,6 +17,8 @@ const App = () => (
         <Exchanges />
       </ExchangeRatesProvider>
     </StoreProvider>
+
+    <Settings />
   </ThemeProvider>
 );
 

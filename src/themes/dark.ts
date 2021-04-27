@@ -13,7 +13,7 @@ const dark: ITheme = {
     },
     primary: {
       main: primaryColor(),
-      light: primaryColor(0.24),
+      light: primaryColor(0.12),
     },
     secondary: {
       main: secondaryColor(),

@@ -6,6 +6,11 @@ import { THEME } from 'common/constants/theme';
 import { Theme, ITheme } from 'common/types/theme';
 import { dark, light } from 'themes';
 
+export interface IThemeContext {
+  theme: ITheme;
+  toggleTheme: () => void;
+}
+
 interface IProps {
   children: React.ReactNode;
 }
