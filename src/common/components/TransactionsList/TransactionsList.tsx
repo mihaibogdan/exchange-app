@@ -12,7 +12,7 @@ const TransactionsList = (props: React.HTMLAttributes<HTMLElement>) => {
     <Wrapper {...props}>
       <Typography variant="h2">History</Typography>
       {transactions.length === 0 && (
-        <Typography shade="light">No exchanges yet</Typography>
+        <Typography shade="light">No transactions for now.</Typography>
       )}
       {transactions.map((transaction: ITransaction) => (
         <StyledTransaction
