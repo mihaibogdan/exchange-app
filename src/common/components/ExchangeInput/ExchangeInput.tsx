@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { NumberFormatValues } from 'react-number-format';
 import ArrowDropDownIcon from 'remixicon-react/ArrowDropDownLineIcon';
 
@@ -29,6 +29,7 @@ const ExchangeInput = ({
   className = '',
 }: IProps) => {
   const [isChangingCurrency, setIsChangingCurrency] = useState(false);
+  const inputRef = useRef(null);
 
   return (
     <Wrapper className={className}>
@@ -49,6 +50,7 @@ const ExchangeInput = ({
           placeholder={`0 ${getCurrencySymbol(account.currency)}`}
           allowNegative={false}
           decimalScale={2}
+          getInputRef={inputRef}
           onValueChange={(values: NumberFormatValues) => {
             let newValue = values.value;
             if (newValue[0] === '-') newValue = newValue.substr(1);
@@ -76,6 +78,9 @@ const ExchangeInput = ({
         selectedAccount={account}
         onSelectAccount={(newAccount: IAccount) => {
           onAccountChange(newAccount);
+          if (type === ExchangeAccountType.Seller) {
+            inputRef.current?.focus();
+          }
         }}
       />
     </Wrapper>

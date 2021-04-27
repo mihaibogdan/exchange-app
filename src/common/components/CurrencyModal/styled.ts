@@ -19,6 +19,7 @@ export const Wrapper = styled(Container)`
   @media only screen and (max-device-width: 736px) {
     width: 100%;
     padding: 20px 10px;
+    margin-top: 30px;
   }
 `;
 
@@ -32,6 +33,10 @@ export const CurrenciesList = styled.div`
 
   max-height: 462px;
   overflow-y: scroll;
+
+  @media only screen and (max-device-width: 736px) {
+    max-height: calc(100vh - 178px);
+  }
 `;
 
 export const Currency = styled.label`

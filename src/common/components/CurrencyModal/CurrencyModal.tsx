@@ -7,7 +7,6 @@ import Modal from 'common/components/Modal';
 import SearchInput from 'common/components/SearchInput';
 import RoundedFlag from 'common/components/RoundedFlag';
 import Typography from 'common/components/Typography';
-import Button from 'common/components/Button';
 import { Column } from 'common/styles/layout';
 import { IAccount } from 'common/types/account';
 import { searchList, highlightQuery } from 'common/utils';
@@ -30,10 +29,6 @@ const CurrencyModal = ({
   const [searchTerm, setSearchTerm] = useState('');
   const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
 
-  const [
-    internalSelectedAccount,
-    setInternalSelectedAccount,
-  ] = useState<IAccount>(selectedAccount);
   const filteredAccounts = useMemo<IAccount[]>(() => {
     if (!searchTerm) return accounts;
 
@@ -67,16 +62,17 @@ const CurrencyModal = ({
               key={account.id}
               htmlFor={account.id}
               className={clsx({
-                active: account.id === internalSelectedAccount.id,
+                active: account.id === selectedAccount.id,
               })}
             >
               <input
                 type="checkbox"
                 id={account.id}
-                checked={account.id === internalSelectedAccount.id}
+                checked={account.id === selectedAccount.id}
                 name="currency"
                 onChange={() => {
-                  setInternalSelectedAccount(account);
+                  onSelectAccount(account);
+                  closeModal();
                 }}
               />
               <div className="content">
@@ -108,17 +104,6 @@ const CurrencyModal = ({
             </Currency>
           ))}
         </CurrenciesList>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            onSelectAccount(internalSelectedAccount);
-            closeModal();
-          }}
-        >
-          {internalSelectedAccount.currency} -{' '}
-          {internalSelectedAccount.currencyName}
-        </Button>
       </Wrapper>
     </Modal>
   );

@@ -42,10 +42,10 @@ const Modal = ({ isOpen, onClose, children }: IProps) => {
     >
       <ModalWithTransition>
         <Container>
-          {children}
           <CloseButton variant="icon" small onClick={closeModal}>
             <CloseIcon />
           </CloseButton>
+          {children}
         </Container>
       </ModalWithTransition>
     </CSSTransition>,
