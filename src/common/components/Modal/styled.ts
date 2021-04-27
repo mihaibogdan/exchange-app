@@ -37,7 +37,7 @@ export const ModalWithTransition = styled.div`
 export const Container = styled.div`
   margin-top: 60px;
 
-  @media only screen and (max-device-width: 736px) {
+  @media only screen and (max-width: 736px) {
     width: 100%;
     margin-top: 20px;
   }
@@ -48,7 +48,7 @@ export const CloseButton = styled(Button)`
   right: 70px;
   top: 60px;
 
-  @media only screen and (max-device-width: 736px) {
+  @media only screen and (max-width: 736px) {
     right: 10px;
     top: 10px;
   }

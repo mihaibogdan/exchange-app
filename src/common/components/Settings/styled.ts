@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)`
   left: 50px;
   box-shadow: 0px 2px 8px rgba(32, 33, 36, 0.24);
 
-  @media only screen and (max-device-width: 736px) {
+  @media only screen and (max-width: 736px) {
     bottom: 30px;
     right: 30px;
     left: auto;

@@ -38,7 +38,7 @@ export const NumberInput = styled(NumberFormat)`
   text-align: right;
   font-size: 40px;
 
-  @media only screen and (max-device-width: 736px) {
+  @media only screen and (max-width: 736px) {
     font-size: 24px;
   }
 `;

@@ -13,10 +13,10 @@ const Exchanges = () => {
   const { exchangeRates } = useContext<IExchangeRatesContext>(
     ExchangeRatesContext
   );
-
+  const isLoading = !exchangeRates;
   return (
-    <Container isLoading={!exchangeRates}>
-      <Loader isLoading={!exchangeRates}>
+    <Container isLoading={isLoading}>
+      <Loader isLoading={isLoading}>
         {() => (
           <>
             <ExchangeWidget mainCurrency="EUR" secondaryCurrency="USD" />

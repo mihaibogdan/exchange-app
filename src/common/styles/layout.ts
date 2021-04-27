@@ -10,9 +10,9 @@ export const Container = styled.div<{ isLoading?: boolean }>`
     `
   height: 100vh;
   display: flex;
-  align-items: center`}
+  align-items: center;`}
 
-  @media only screen and (max-device-width: 736px) {
+  @media only screen and (max-width: 736px) {
     width: 100%;
     padding: 20px 20px 120px 20px;
   }

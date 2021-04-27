@@ -12,6 +12,8 @@ export const exchange = (
   exchangeRates: IRates,
   decimals = 2
 ): string => {
+  if (!exchangeRates) return '';
+
   const { rates } = exchangeRates;
   if (!rates[source] || !rates[destination]) return amount.toString();
   if (source === destination) return amount.toString();
