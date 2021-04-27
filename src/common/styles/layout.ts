@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ isLoading: boolean }>`
+export const Container = styled.div<{ isLoading?: boolean }>`
   width: 600px;
   margin: 0 auto;
   padding: 60px 0;

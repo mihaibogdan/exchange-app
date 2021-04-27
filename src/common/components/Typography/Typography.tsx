@@ -5,6 +5,7 @@ import T from './styled';
 
 enum VarianMappings {
   h1 = 'h1',
+  h2 = 'h2',
   body = 'p',
   caption = 'span',
 }

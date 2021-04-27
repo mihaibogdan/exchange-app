@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  width: 500px;
+import { Container } from 'common/styles/layout';
+
+export const Wrapper = styled(Container)`
   display: flex;
+  padding: 0;
   flex-direction: column;
   h1 {
     margin-bottom: 60px;

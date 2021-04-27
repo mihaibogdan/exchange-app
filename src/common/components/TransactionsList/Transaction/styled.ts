@@ -29,4 +29,5 @@ export const BadgeIcon = styled.span`
 
 export const AmountBox = styled(Column)`
   margin-left: auto;
+  text-align: right;
 `;

@@ -7,4 +7,5 @@ export interface ITransaction {
   secondaryCurrency: string;
   mainAmount: string;
   secondaryAmount: string;
+  timestamp: number;
 }

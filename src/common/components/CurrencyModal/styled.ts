@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  width: 600px;
+import { Container } from 'common/styles/layout';
+
+export const Wrapper = styled(Container)`
   display: flex;
   flex-direction: column;
+  padding: 0;
 
   .search-input {
     width: 100%;

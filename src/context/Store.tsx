@@ -44,7 +44,7 @@ const bankAccounts: IAccount[] = [
     id: '4a784950-cf9c-414a-9858-734aedc0f4a5',
     currency: 'EUR',
     currencyName: 'Euro',
-    balance: 50,
+    balance: 250,
     countryCode: 'EU',
   },
   {
@@ -99,6 +99,7 @@ const StoreContextProvider = ({ children }: IProps) => {
       setTransactions([
         {
           id: uuidv4(),
+          timestamp: Date.now(),
           mainCurrency: main.account.currency,
           mainAmount: main.exchangeAmount,
           secondaryCurrency: secondary.account.currency,

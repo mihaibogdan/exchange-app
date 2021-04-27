@@ -15,37 +15,38 @@ export const ModalWithTransition = styled.div`
   background-color: ${({ theme }) => theme.palette.background.main};
 
   &.grow-enter {
-    transform: scale(0.97) translateY(5px);
+    transform: scale(0.97);
     opacity: 0;
   }
   &.grow-enter-active {
     transition: transform 250ms, opacity 250ms;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
   &.grow-exit {
-    transform: scale(1) translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
   &.grow-exit-active {
     transition: transform 250ms, opacity 250ms;
-    transform: scale(0.97) translateY(5px);
+    transform: scale(0.97);
     opacity: 0;
   }
 `;
 
 export const Container = styled.div`
-  margin-top: 40px;
+  margin-top: 60px;
 
   @media only screen and (max-device-width: 736px) {
     width: 100%;
+    margin-top: 20px;
   }
 `;
 
 export const CloseButton = styled(Button)`
   position: absolute;
   right: 70px;
-  top: 40px;
+  top: 60px;
 
   @media only screen and (max-device-width: 736px) {
     right: 10px;

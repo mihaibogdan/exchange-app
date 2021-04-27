@@ -58,6 +58,7 @@ const CurrencyModal = ({
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             setSearchTerm(e.currentTarget.value);
           }}
+          autoFocus
           className="search-input"
         />
         <CurrenciesList>

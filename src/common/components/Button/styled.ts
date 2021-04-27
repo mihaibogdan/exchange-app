@@ -55,7 +55,7 @@ export const Button = styled.button`
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.palette.border};
-    outline-offset: 0px;
+    outline-offset: 4px;
   }
 
   &:disabled {

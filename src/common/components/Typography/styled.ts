@@ -11,6 +11,11 @@ export default styled.p<IProps>`
     font-weight: 500;
   }
 
+  &.h2 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
   &.body {
     font-size: 20px;
     font-weight: 500;
