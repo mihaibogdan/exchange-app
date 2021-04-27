@@ -19,6 +19,15 @@ const Modal = ({ isOpen, onClose, children }: IProps) => {
     if (isOpen !== internalIsOpen) setInternalIsOpen(isOpen);
   }, [isOpen]);
 
+  useEffect(() => {
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keyup', onKeyUp);
+
+    return () => document.removeEventListener('keyup', onKeyUp);
+  }, []);
+
   const closeModal = () => {
     setInternalIsOpen(false);
     setTimeout(onClose, TIMEOUT);
