@@ -9,7 +9,7 @@ export interface IRates {
 
 export interface IExchangeMember {
   account: IAccount;
-  exchangeValue: string;
+  exchangeAmount: string;
 }
 
 export enum ExchangeType {

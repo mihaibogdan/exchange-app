@@ -14,6 +14,7 @@ export interface IProps extends React.HTMLAttributes<HTMLElement> {
   color?: 'primary' | 'secondary' | 'text' | 'error';
   shade?: 'main' | 'light';
   fontWeight?: 'normal' | 'bold';
+  noWrap?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
@@ -24,6 +25,7 @@ const Typography = ({
   shade = 'main',
   fontWeight = 'normal',
   className = '',
+  noWrap,
   children,
   ...props
 }: IProps) => {
@@ -33,7 +35,8 @@ const Typography = ({
     variant,
     `color-${color}`,
     `shade-${shade}`,
-    `fontWeight-${fontWeight}`
+    `fontWeight-${fontWeight}`,
+    { noWrap }
   );
 
   return (

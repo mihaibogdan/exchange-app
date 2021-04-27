@@ -6,8 +6,8 @@ export const changeMainAccount = (account: IAccount) => ({
   body: { account },
 });
 
-export const changeMainValue = (value: string, exchangeRates: IRates) => ({
-  type: 'CHANGE_MAIN_VALUE',
+export const changeMainAmount = (value: string, exchangeRates: IRates) => ({
+  type: 'CHANGE_MAIN_AMOUNT',
   body: { value, exchangeRates },
 });
 
@@ -16,8 +16,11 @@ export const changeSecondaryAccount = (account: IAccount) => ({
   body: { account },
 });
 
-export const changeSecondaryValue = (value: string, exchangeRates: IRates) => ({
-  type: 'CHANGE_SECONDARY_VALUE',
+export const changeSecondaryAmount = (
+  value: string,
+  exchangeRates: IRates
+) => ({
+  type: 'CHANGE_SECONDARY_AMOUNT',
   body: { value, exchangeRates },
 });
 
@@ -27,6 +30,6 @@ export const toggleType = () => ({
 });
 
 export const resetValues = () => ({
-  type: 'RESET_VALUES',
+  type: 'RESET_AMOUNTS',
   body: {},
 });

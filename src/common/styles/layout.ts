@@ -11,7 +11,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Row = styled.div<{ spaceBetween: boolean }>`
+export const Row = styled.div<{ spaceBetween?: boolean }>`
   display: flex;
 
   ${({ spaceBetween }) => spaceBetween && `justify-content: space-between`}

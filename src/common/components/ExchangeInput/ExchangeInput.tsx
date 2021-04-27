@@ -6,6 +6,7 @@ import { IAccount } from 'common/types/account';
 import { ExchangeAccountType } from 'common/types/exchanges';
 import { Row } from 'common/styles/layout';
 import { formatNumber } from 'common/utils/numbers';
+import { getCurrencySymbol } from 'common/utils/currencies';
 import Typography from 'common/components/Typography';
 import CurrencyModal from 'common/components/CurrencyModal';
 import { Wrapper, AccountButton, BalanceButton, NumberInput } from './styled';
@@ -40,10 +41,10 @@ const ExchangeInput = ({
         </AccountButton>
         <NumberInput
           value={value}
-          suffix={` ${account.currencySymbol}`}
+          suffix={` ${getCurrencySymbol(account.currency)}`}
           prefix={type === ExchangeAccountType.Seller ? '-' : '+'}
           thousandSeparator
-          placeholder={`0 ${account.currencySymbol}`}
+          placeholder={`0 ${getCurrencySymbol(account.currency)}`}
           allowNegative={false}
           decimalScale={2}
           onValueChange={(values: NumberFormatValues) => {
@@ -58,7 +59,8 @@ const ExchangeInput = ({
           variant="empty"
           onClick={() => onValueChange(account.balance.toFixed(2))}
         >
-          Balance: {formatNumber(account.balance)} {account.currencySymbol}
+          Balance: {formatNumber(account.balance)}{' '}
+          {getCurrencySymbol(account.currency)}
         </BalanceButton>
         {+value > account.balance && type === ExchangeAccountType.Seller && (
           <Typography variant="caption" color="error" className="error">

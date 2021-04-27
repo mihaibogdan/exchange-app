@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ThemeProvider from 'context/Theme';
-import AccountsProvider from 'context/Accounts';
+import StoreProvider from 'context/Store';
 import ExchangeRatesProvider from 'context/ExchangeRates';
 import GlobalStyles from 'common/styles/globalStyles';
 
@@ -11,11 +11,11 @@ const App = () => (
   <ThemeProvider>
     <GlobalStyles />
 
-    <AccountsProvider>
+    <StoreProvider>
       <ExchangeRatesProvider>
         <Exchanges />
       </ExchangeRatesProvider>
-    </AccountsProvider>
+    </StoreProvider>
   </ThemeProvider>
 );
 

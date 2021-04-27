@@ -21,14 +21,14 @@ function CHANGE_MAIN_ACCOUNT(
   nextState.main.account = account;
 }
 
-function CHANGE_MAIN_VALUE(
+function CHANGE_MAIN_AMOUNT(
   nextState: IExchangeWidgetState,
   payload: { body: { value: string; exchangeRates: IRates } }
 ) {
   const { value, exchangeRates } = payload.body;
   if (!value) {
-    nextState.main.exchangeValue = '';
-    nextState.secondary.exchangeValue = '';
+    nextState.main.exchangeAmount = '';
+    nextState.secondary.exchangeAmount = '';
     return;
   }
 
@@ -38,8 +38,8 @@ function CHANGE_MAIN_VALUE(
     nextState.secondary.account.currency,
     exchangeRates
   );
-  nextState.main.exchangeValue = value;
-  nextState.secondary.exchangeValue = exchangedValue;
+  nextState.main.exchangeAmount = value;
+  nextState.secondary.exchangeAmount = exchangedValue;
 }
 
 function CHANGE_SECONDARY_ACCOUNT(
@@ -56,14 +56,14 @@ function CHANGE_SECONDARY_ACCOUNT(
   // nextState.secondary.value = exchangedValue;
 }
 
-function CHANGE_SECONDARY_VALUE(
+function CHANGE_SECONDARY_AMOUNT(
   nextState: IExchangeWidgetState,
   payload: { body: { value: string; exchangeRates: IRates } }
 ) {
   const { value, exchangeRates } = payload.body;
   if (!value) {
-    nextState.main.exchangeValue = '';
-    nextState.secondary.exchangeValue = '';
+    nextState.main.exchangeAmount = '';
+    nextState.secondary.exchangeAmount = '';
     return;
   }
 
@@ -74,8 +74,8 @@ function CHANGE_SECONDARY_VALUE(
     exchangeRates
   );
 
-  nextState.main.exchangeValue = exchangedValue;
-  nextState.secondary.exchangeValue = value;
+  nextState.main.exchangeAmount = exchangedValue;
+  nextState.secondary.exchangeAmount = value;
 }
 
 function TOGGLE_TYPE(nextState: IExchangeWidgetState) {
@@ -85,30 +85,30 @@ function TOGGLE_TYPE(nextState: IExchangeWidgetState) {
     nextState.type = ExchangeType.Buy;
   }
 }
-function RESET_VALUES(nextState: IExchangeWidgetState) {
-  nextState.main.exchangeValue = '';
-  nextState.secondary.exchangeValue = '';
+function RESET_AMOUNTS(nextState: IExchangeWidgetState) {
+  nextState.main.exchangeAmount = '';
+  nextState.secondary.exchangeAmount = '';
 }
 
 const reducer = createReducer<IExchangeWidgetState>(
   {
     main: {
       account: null,
-      exchangeValue: '',
+      exchangeAmount: '',
     },
     secondary: {
       account: null,
-      exchangeValue: '',
+      exchangeAmount: '',
     },
     type: ExchangeType.Buy,
   },
   {
     CHANGE_MAIN_ACCOUNT,
-    CHANGE_MAIN_VALUE,
+    CHANGE_MAIN_AMOUNT,
     CHANGE_SECONDARY_ACCOUNT,
-    CHANGE_SECONDARY_VALUE,
+    CHANGE_SECONDARY_AMOUNT,
     TOGGLE_TYPE,
-    RESET_VALUES,
+    RESET_AMOUNTS,
   }
 );
 

@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useEffect } from 'react';
 import CheckIcon from 'remixicon-react/CheckLineIcon';
 import clsx from 'clsx';
 
-import { AccountsContext, IAccountsContext } from 'context/Accounts';
+import { StoreContext, IStoreContext } from 'context/Store';
 import Modal from 'common/components/Modal';
 import SearchInput from 'common/components/SearchInput';
 import RoundedFlag from 'common/components/RoundedFlag';
@@ -26,7 +26,7 @@ const CurrencyModal = ({
   onSelectAccount,
   onClose,
 }: IProps) => {
-  const { accounts } = useContext<IAccountsContext>(AccountsContext);
+  const { accounts } = useContext<IStoreContext>(StoreContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
 

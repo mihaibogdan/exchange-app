@@ -6,18 +6,19 @@ import {
   ExchangeRatesContext,
   IExchangeRatesContext,
 } from 'context/ExchangeRates';
-import { AccountsContext, IAccountsContext } from 'context/Accounts';
-import { exchange } from 'common/utils/exchangeRates';
+import { StoreContext, IStoreContext } from 'context/Store';
 import { IAccount } from 'common/types/account';
 import { ExchangeAccountType, ExchangeType } from 'common/types/exchanges';
+import { exchange } from 'common/utils/exchangeRates';
+import { getCurrencySymbol } from 'common/utils/currencies';
 import Typography from 'common/components/Typography';
 import ExchangeInput from 'common/components/ExchangeInput';
 import Button from 'common/components/Button';
 import {
   changeMainAccount,
-  changeMainValue,
+  changeMainAmount,
   changeSecondaryAccount,
-  changeSecondaryValue,
+  changeSecondaryAmount,
   resetValues,
   toggleType,
 } from './logic/actions';
@@ -33,17 +34,17 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
   const { exchangeRates } = useContext<IExchangeRatesContext>(
     ExchangeRatesContext
   );
-  const { accounts, exchangeBetweenAccounts } = useContext<IAccountsContext>(
-    AccountsContext
+  const { accounts, exchangeBetweenAccounts } = useContext<IStoreContext>(
+    StoreContext
   );
   const [state, dispatch] = useReducer(reducer, {
     main: {
       account: accounts.find(a => a.currency === mainCurrency),
-      exchangeValue: '',
+      exchangeAmount: '',
     },
     secondary: {
       account: accounts.find(a => a.currency === secondaryCurrency),
-      exchangeValue: '',
+      exchangeAmount: '',
     },
     type: ExchangeType.Sell,
   });
@@ -63,11 +64,11 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
 
   const exceedsBalance = useMemo(() => {
     if (type === ExchangeType.Sell) {
-      if (main.account.balance < main.exchangeValue) return true;
+      if (main.account.balance < main.exchangeAmount) return true;
     }
 
     if (type === ExchangeType.Buy) {
-      if (secondary.account.balance < secondary.exchangeValue) return true;
+      if (secondary.account.balance < secondary.exchangeAmount) return true;
     }
 
     return false;
@@ -75,20 +76,20 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
 
   const onChangeMainAccount = (account: IAccount) => {
     dispatch(changeMainAccount(account));
-    dispatch(changeMainValue(main.exchangeValue, exchangeRates));
+    dispatch(changeMainAmount(main.exchangeAmount, exchangeRates));
   };
 
-  const onChangeMainValue = (exchangeValue: string) => {
-    dispatch(changeMainValue(exchangeValue, exchangeRates));
+  const onChangeMainAmount = (exchangeAmount: string) => {
+    dispatch(changeMainAmount(exchangeAmount, exchangeRates));
   };
 
   const onChangeSecondaryAccount = (account: IAccount) => {
     dispatch(changeSecondaryAccount(account));
-    dispatch(changeMainValue(secondary.exchangeValue, exchangeRates));
+    dispatch(changeMainAmount(secondary.exchangeAmount, exchangeRates));
   };
 
-  const onChangeSecondaryValue = (exchangeValue: string) => {
-    dispatch(changeSecondaryValue(exchangeValue, exchangeRates));
+  const onChangeSecondaryAmount = (exchangeAmount: string) => {
+    dispatch(changeSecondaryAmount(exchangeAmount, exchangeRates));
   };
 
   const onTypeToggle = () => {
@@ -101,26 +102,28 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
         {type === ExchangeType.Buy ? 'Buy' : 'Sell'} {main.account.currency}
       </Typography>
       <Typography variant="caption" color="primary" className="market-order">
-        {`Market order • 1 ${main.account.currencySymbol} = ${exchange(
+        {`Market order • 1 ${getCurrencySymbol(
+          main.account.currency
+        )} = ${exchange(
           1,
           main.account.currency,
           secondary.account.currency,
           exchangeRates,
           4
-        )} ${secondary.account.currencySymbol}`}
+        )} ${getCurrencySymbol(secondary.account.currency)}`}
       </Typography>
 
       <InputsArea>
         <ExchangeInput
           className="main-account"
           account={main.account}
-          value={main.exchangeValue}
+          value={main.exchangeAmount}
           type={
             type === ExchangeType.Sell
               ? ExchangeAccountType.Seller
               : ExchangeAccountType.Buyer
           }
-          onValueChange={onChangeMainValue}
+          onValueChange={onChangeMainAmount}
           onAccountChange={onChangeMainAccount}
         />
         <DirectionButton variant="icon" color="primary" onClick={onTypeToggle}>
@@ -128,13 +131,13 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
         </DirectionButton>
         <ExchangeInput
           account={secondary.account}
-          value={secondary.exchangeValue}
+          value={secondary.exchangeAmount}
           type={
             type === ExchangeType.Sell
               ? ExchangeAccountType.Buyer
               : ExchangeAccountType.Seller
           }
-          onValueChange={onChangeSecondaryValue}
+          onValueChange={onChangeSecondaryAmount}
           onAccountChange={onChangeSecondaryAccount}
         />
       </InputsArea>
@@ -143,8 +146,8 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
         color="primary"
         disabled={
           exceedsBalance ||
-          Number.parseFloat(main.exchangeValue) === 0 ||
-          isNaN(Number.parseFloat(main.exchangeValue))
+          Number.parseFloat(main.exchangeAmount) === 0 ||
+          isNaN(Number.parseFloat(main.exchangeAmount))
         }
         className="exchange-button"
         onClick={() => {

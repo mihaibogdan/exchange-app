@@ -24,4 +24,8 @@ export default styled.p<IProps>`
   &.fontWeight-bold {
     font-weight: bold;
   }
+
+  &.noWrap {
+    white-space: nowrap;
+  }
 `;
