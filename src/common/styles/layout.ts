@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isLoading: boolean }>`
   width: 600px;
   margin: 0 auto;
   padding: 60px 0;
+
+  ${({ isLoading }) =>
+    isLoading &&
+    `
+  height: 100vh;
+  display: flex;
+  align-items: center`}
 
   @media only screen and (max-device-width: 736px) {
     width: 100%;

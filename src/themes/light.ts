@@ -28,7 +28,7 @@ const light: ITheme = {
       main: '#FF3636',
     },
     border: '#000',
-    hover: 'rgba(0, 0, 0, 0.06)',
+    hover: 'rgba(0, 0, 0, 0.03)',
   },
   typography: {
     fontFamily: '"Noto Sans", sans-serif',

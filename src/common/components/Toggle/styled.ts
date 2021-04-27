@@ -22,7 +22,7 @@ export const Wrapper = styled.label`
   }
 
   input[type='checkbox']:focus-visible + .toggleSwitch {
-    outline: 4px solid rgba(255, 255, 255, 0.8);
+    outline: 4px solid ${({ theme }) => theme.palette.border};
     outline-offset: 4px;
   }
 
@@ -30,11 +30,11 @@ export const Wrapper = styled.label`
     cursor: pointer;
     width: 36px;
     height: 20px;
-    background: ${({ theme }) => theme.palette.background.light};
+    background-color: rgba(32, 33, 36, 0.24);
     display: block;
     border-radius: 100px;
     position: relative;
-    transition: background 0.3s cubic-bezier(1, 0, 0, 1);
+    transition: background-color 150ms cubic-bezier(1, 0, 0, 1);
   }
 
   .toggleSwitch:after {
@@ -44,26 +44,27 @@ export const Wrapper = styled.label`
     left: 0;
     width: 20px;
     height: 20px;
-    background: #20d769;
+    background-color: #fff;
+    box-shadow: 0px 2px 8px rgba(32, 33, 36, 0.24);
     border-radius: 90px;
-    transition: all 0.2s cubic-bezier(1, 0, 0, 1);
+    transform: translateX(0px);
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
   input:checked + .toggleSwitch {
-    background: rgba(32, 215, 105, 0.24);
+    background-color: rgba(32, 215, 105, 0.24);
   }
 
   input:checked + .toggleSwitch:after {
     left: 100%;
     transform: translateX(-100%);
+    background-color: #20d769;
   }
 
   input:disabled + .toggleSwitch {
     opacity: 0.2;
     cursor: default;
-  }
-
-  .toggleSwitch:active:after {
-    width: 24px;
   }
 `;

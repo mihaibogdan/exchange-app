@@ -7,18 +7,23 @@ import {
 } from 'context/ExchangeRates';
 import { Container } from 'common/styles/layout';
 import { StyledTransactionsList } from './styled';
+import Loader from 'common/components/Loader';
 
 const Exchanges = () => {
   const { exchangeRates } = useContext<IExchangeRatesContext>(
     ExchangeRatesContext
   );
 
-  if (!exchangeRates) return null;
-
   return (
-    <Container>
-      <ExchangeWidget mainCurrency="EUR" secondaryCurrency="USD" />
-      <StyledTransactionsList />
+    <Container isLoading={!exchangeRates}>
+      <Loader isLoading={!exchangeRates}>
+        {() => (
+          <>
+            <ExchangeWidget mainCurrency="EUR" secondaryCurrency="USD" />
+            <StyledTransactionsList />
+          </>
+        )}
+      </Loader>
     </Container>
   );
 };

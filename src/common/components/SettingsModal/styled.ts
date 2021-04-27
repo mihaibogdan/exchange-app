@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   h1 {
     margin-bottom: 60px;
   }
+
   @media only screen and (max-device-width: 736px) {
     width: 100%;
     padding: 20px 10px;
