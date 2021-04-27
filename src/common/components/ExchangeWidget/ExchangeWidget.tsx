@@ -96,6 +96,14 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
     dispatch(toggleType());
   };
 
+  const onExchange = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (exceedsBalance || !main.exchangeAmount) return;
+
+    exchangeBetweenAccounts(main, secondary, type);
+    dispatch(resetValues());
+  };
+
   return (
     <Wrapper>
       <Typography variant="h1">
@@ -113,52 +121,55 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
         )} ${getCurrencySymbol(secondary.account.currency)}`}
       </Typography>
 
-      <InputsArea>
-        <ExchangeInput
-          className="main-account"
-          account={main.account}
-          value={main.exchangeAmount}
-          type={
-            type === ExchangeType.Sell
-              ? ExchangeAccountType.Seller
-              : ExchangeAccountType.Buyer
+      <form onSubmit={onExchange}>
+        <InputsArea>
+          <ExchangeInput
+            className="main-account"
+            account={main.account}
+            value={main.exchangeAmount}
+            type={
+              type === ExchangeType.Sell
+                ? ExchangeAccountType.Seller
+                : ExchangeAccountType.Buyer
+            }
+            onValueChange={onChangeMainAmount}
+            onAccountChange={onChangeMainAccount}
+          />
+          <DirectionButton
+            variant="icon"
+            color="primary"
+            onClick={onTypeToggle}
+          >
+            {type === ExchangeType.Sell ? <ArrowDownIcon /> : <ArrowUpIcon />}
+          </DirectionButton>
+          <ExchangeInput
+            account={secondary.account}
+            value={secondary.exchangeAmount}
+            type={
+              type === ExchangeType.Sell
+                ? ExchangeAccountType.Buyer
+                : ExchangeAccountType.Seller
+            }
+            onValueChange={onChangeSecondaryAmount}
+            onAccountChange={onChangeSecondaryAccount}
+          />
+        </InputsArea>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={
+            exceedsBalance ||
+            Number.parseFloat(main.exchangeAmount) === 0 ||
+            isNaN(Number.parseFloat(main.exchangeAmount))
           }
-          onValueChange={onChangeMainAmount}
-          onAccountChange={onChangeMainAccount}
-        />
-        <DirectionButton variant="icon" color="primary" onClick={onTypeToggle}>
-          {type === ExchangeType.Sell ? <ArrowDownIcon /> : <ArrowUpIcon />}
-        </DirectionButton>
-        <ExchangeInput
-          account={secondary.account}
-          value={secondary.exchangeAmount}
-          type={
-            type === ExchangeType.Sell
-              ? ExchangeAccountType.Buyer
-              : ExchangeAccountType.Seller
-          }
-          onValueChange={onChangeSecondaryAmount}
-          onAccountChange={onChangeSecondaryAccount}
-        />
-      </InputsArea>
-      <Button
-        variant="contained"
-        color="primary"
-        disabled={
-          exceedsBalance ||
-          Number.parseFloat(main.exchangeAmount) === 0 ||
-          isNaN(Number.parseFloat(main.exchangeAmount))
-        }
-        className="exchange-button"
-        onClick={() => {
-          exchangeBetweenAccounts(main, secondary, type);
-          dispatch(resetValues());
-        }}
-      >
-        {`${type === ExchangeType.Sell ? 'Sell' : 'Buy'} ${
-          main.account.currency
-        } for ${secondary.account.currency}`}
-      </Button>
+          className="exchange-button"
+          type="submit"
+        >
+          {`${type === ExchangeType.Sell ? 'Sell' : 'Buy'} ${
+            main.account.currency
+          } for ${secondary.account.currency}`}
+        </Button>
+      </form>
     </Wrapper>
   );
 };

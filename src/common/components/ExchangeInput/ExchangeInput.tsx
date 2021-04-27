@@ -35,7 +35,9 @@ const ExchangeInput = ({
       <Row spaceBetween>
         <AccountButton
           variant="empty"
-          onClick={() => setIsChangingCurrency(true)}
+          onClick={() => {
+            setIsChangingCurrency(true);
+          }}
         >
           {account.currency} <ArrowDropDownIcon />
         </AccountButton>

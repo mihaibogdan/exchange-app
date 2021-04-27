@@ -15,6 +15,7 @@ export const Wrapper = styled(Column)`
 
   .exchange-button {
     margin-top: 40px;
+    width: 100%;
   }
 `;
 

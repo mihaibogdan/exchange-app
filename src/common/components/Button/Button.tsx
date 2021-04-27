@@ -23,7 +23,7 @@ const Button = ({
   });
 
   return (
-    <StyledButton className={classes} color={color} {...props}>
+    <StyledButton className={classes} color={color} type="button" {...props}>
       {children}
     </StyledButton>
   );
