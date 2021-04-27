@@ -14,7 +14,7 @@ export const Container = styled.div<{ isLoading?: boolean }>`
 
   @media only screen and (max-device-width: 736px) {
     width: 100%;
-    padding: 20px 20px;
+    padding: 20px 20px 120px 20px;
   }
 `;
 
