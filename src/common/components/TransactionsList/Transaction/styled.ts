@@ -4,7 +4,7 @@ import { Row, Column } from 'common/styles/layout';
 
 export const StyledTransaction = styled(Row)`
   width: 100%;
-  padding: 8px 16px;
+  padding: 12px 16px;
 
   background-color: ${({ theme }) => theme.palette.background.light};
   align-items: center;
