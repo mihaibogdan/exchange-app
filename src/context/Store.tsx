@@ -20,18 +20,25 @@ export interface IStoreContext {
 
 const bankAccounts: IAccount[] = [
   {
-    id: '239fc813-fd0e-45a2-a3cc-4b8007ac2318',
-    currency: 'USD',
-    currencyName: 'United States Dollar',
-    balance: 1700,
-    countryCode: 'US',
+    id: '467d35f9-84c0-48ca-98ef-cbb6d250f2a5',
+    currency: 'AED',
+    currencyName: 'United Arab Emirates Dirham',
+    balance: 500,
+    countryCode: 'AE',
   },
   {
-    id: '28172914-2409-4b3b-a527-62c7ac9b3f10',
-    currency: 'GBP',
-    currencyName: 'British Pound',
-    balance: 15040,
-    countryCode: 'GB',
+    id: 'b80c05d6-bb75-4c3a-aaa6-6c26cb97758c',
+    currency: 'AUD',
+    currencyName: 'Australian Dollar',
+    balance: 200.43,
+    countryCode: 'AU',
+  },
+  {
+    id: '2dabdb53-3a1f-4b90-a4a9-7ac459154428',
+    currency: 'BGN',
+    currencyName: 'Bulgarian Lev',
+    balance: 100,
+    countryCode: 'BG',
   },
   {
     id: '4a784950-cf9c-414a-9858-734aedc0f4a5',
@@ -41,11 +48,25 @@ const bankAccounts: IAccount[] = [
     countryCode: 'EU',
   },
   {
+    id: '28172914-2409-4b3b-a527-62c7ac9b3f10',
+    currency: 'GBP',
+    currencyName: 'British Pound',
+    balance: 15040,
+    countryCode: 'GB',
+  },
+  {
     id: 'd0e192a6-3055-4cc9-8933-0e81a293cecb',
     currency: 'RON',
     currencyName: 'Romanian Leu',
     balance: 400,
     countryCode: 'RO',
+  },
+  {
+    id: '239fc813-fd0e-45a2-a3cc-4b8007ac2318',
+    currency: 'USD',
+    currencyName: 'United States Dollar',
+    balance: 1700,
+    countryCode: 'US',
   },
 ];
 

@@ -1,6 +1,9 @@
 export const currencySymbol = {
+  AED: 'AED',
+  AUD: 'AU$',
+  BGN: 'BGN',
   EUR: '€',
-  USD: '$',
   GBP: '£',
   RON: 'RON',
+  USD: '$',
 };
