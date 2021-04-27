@@ -33,10 +33,6 @@ export const CurrenciesList = styled.div`
 
   max-height: 462px;
   overflow-y: scroll;
-
-  @media only screen and (max-device-width: 736px) {
-    max-height: calc(100vh - 178px);
-  }
 `;
 
 export const Currency = styled.label`
