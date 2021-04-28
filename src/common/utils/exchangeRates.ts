@@ -15,7 +15,7 @@ export const exchange = (
   if (!exchangeRates) return '';
 
   const { rates } = exchangeRates;
-  if (!rates[source] || !rates[destination]) return amount.toString();
+  if (!rates?.[source] || !rates?.[destination]) return amount.toString();
   if (source === destination) return amount.toString();
 
   const baseAmount = amount / rates[source];

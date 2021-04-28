@@ -41,9 +41,14 @@ const Modal = ({ isOpen, onClose, children, ...props }: IProps) => {
       timeout={TIMEOUT}
       {...props}
     >
-      <ModalWithTransition>
+      <ModalWithTransition role="dialog">
         <Container>
-          <CloseButton variant="icon" small onClick={closeModal}>
+          <CloseButton
+            variant="icon"
+            small
+            onClick={closeModal}
+            aria-label="close"
+          >
             <CloseIcon />
           </CloseButton>
           {children}

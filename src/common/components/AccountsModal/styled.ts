@@ -23,7 +23,7 @@ export const Wrapper = styled(Container)`
   }
 `;
 
-export const CurrenciesList = styled.div`
+export const AccountsList = styled.div`
   margin-top: 16px;
   background-color: ${({ theme }) => theme.palette.background.light};
 
@@ -35,7 +35,7 @@ export const CurrenciesList = styled.div`
   overflow-y: scroll;
 `;
 
-export const Currency = styled.label`
+export const Account = styled.label`
   display: block;
   cursor: pointer;
   background-color: ${({ theme }) => theme.palette.background.light};

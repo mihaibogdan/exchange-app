@@ -6,8 +6,8 @@ import {
   IExchangeRatesContext,
 } from 'context/ExchangeRates';
 import { Container } from 'common/styles/layout';
-import { StyledTransactionsList } from './styled';
 import Loader from 'common/components/Loader';
+import { StyledTransactionsList } from './styled';
 
 const Exchanges = () => {
   const { exchangeRates } = useContext<IExchangeRatesContext>(

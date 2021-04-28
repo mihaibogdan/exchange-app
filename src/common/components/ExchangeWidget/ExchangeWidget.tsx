@@ -139,6 +139,7 @@ const ExchangeWidget = ({ mainCurrency, secondaryCurrency }: IProps) => {
             variant="icon"
             color="primary"
             onClick={onTypeToggle}
+            aria-label="toggle type"
           >
             {type === ExchangeType.Sell ? <ArrowDownIcon /> : <ArrowUpIcon />}
           </DirectionButton>

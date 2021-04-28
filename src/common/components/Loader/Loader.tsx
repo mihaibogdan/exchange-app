@@ -3,11 +3,11 @@ import React from 'react';
 import { Center, LoaderWrapper } from './styled';
 
 interface IProps {
-  isLoading: boolean;
+  isLoading?: boolean;
   children: React.ReactNode;
 }
 
-const Loader = ({ isLoading, children }: IProps) => {
+const Loader = ({ isLoading = false, children }: IProps) => {
   if (isLoading) {
     const size = 80;
 

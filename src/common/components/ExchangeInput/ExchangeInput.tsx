@@ -28,7 +28,7 @@ const ExchangeInput = ({
   onAccountChange,
   className = '',
 }: IProps) => {
-  const [isChangingCurrency, setIsChangingCurrency] = useState(false);
+  const [isChangingAccount, setIsChangingAccount] = useState(false);
   const inputRef = useRef(null);
 
   return (
@@ -37,7 +37,7 @@ const ExchangeInput = ({
         <AccountButton
           variant="empty"
           onClick={() => {
-            setIsChangingCurrency(true);
+            setIsChangingAccount(true);
           }}
         >
           {account.currency} <ArrowDropDownIcon />
@@ -56,12 +56,15 @@ const ExchangeInput = ({
             if (newValue[0] === '-') newValue = newValue.substr(1);
             if (value !== newValue) onValueChange(newValue);
           }}
+          aria-label={type}
         />
       </Row>
       <Row spaceBetween>
         <BalanceButton
           variant="empty"
-          onClick={() => onValueChange(account.balance.toFixed(2))}
+          onClick={() => {
+            onValueChange(formatNumber(account.balance));
+          }}
         >
           Balance: {formatNumber(account.balance)}{' '}
           {getCurrencySymbol(account.currency)}
@@ -73,8 +76,10 @@ const ExchangeInput = ({
         )}
       </Row>
       <AccountsModal
-        isOpen={isChangingCurrency}
-        onClose={() => setIsChangingCurrency(false)}
+        isOpen={isChangingAccount}
+        onClose={() => {
+          setIsChangingAccount(false);
+        }}
         selectedAccount={account}
         onSelectAccount={(newAccount: IAccount) => {
           onAccountChange(newAccount);

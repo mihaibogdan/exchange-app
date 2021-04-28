@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import { IAccount } from 'common/types/account';
 import { StoreContext } from 'context/Store';
+import { IAccount } from 'common/types/account';
 import { renderWithTheme } from 'common/utils/jest';
 import AccountsModal from './AccountsModal';
 
@@ -23,6 +24,17 @@ const mockedAccounts: IAccount[] = [
   },
 ];
 
+const mockedExchangedRates = {
+  base: 'USD',
+  rates: {
+    EUR: 0.824834,
+    GBP: 0.717073,
+    USD: 1,
+  },
+};
+
+fetchMock.mockResponse(JSON.stringify(mockedExchangedRates));
+
 const Contexts = ({ children }) => (
   <StoreContext.Provider
     value={{
@@ -36,7 +48,7 @@ const Contexts = ({ children }) => (
 );
 
 describe('AccountsModal', () => {
-  it('should render 2 currencies', async () => {
+  it('should render two currencies', async () => {
     renderWithTheme(
       <AccountsModal
         isOpen={true}
@@ -62,7 +74,7 @@ describe('AccountsModal', () => {
     );
 
     const input = screen.getByLabelText('search');
-    fireEvent.change(input, { target: { value: 'EUR' } });
+    userEvent.type(input, 'EUR');
     expect(screen.getByRole('list').childNodes.length).toBe(1);
   });
 
@@ -78,7 +90,7 @@ describe('AccountsModal', () => {
     );
     const currenciesList = screen.getByRole('list');
     const input = screen.getByLabelText('search');
-    fireEvent.change(input, { target: { value: 'MISSING' } });
+    userEvent.type(input, 'MISSING');
     expect(currenciesList.childNodes.length).toBe(0);
   });
 
@@ -94,11 +106,11 @@ describe('AccountsModal', () => {
       { wrapper: Contexts }
     );
     const input = screen.getByLabelText('search');
-    fireEvent.change(input, { target: { value: 'GBP' } });
+    userEvent.type(input, 'GBP');
 
     const GBPOption = screen.getByLabelText('GBP');
     const GBPAccount = mockedAccounts.find(a => a.currency === 'GBP');
-    fireEvent.click(GBPOption);
+    userEvent.click(GBPOption);
     expect(onSelectAccount).toHaveBeenCalledWith(GBPAccount);
   });
 });

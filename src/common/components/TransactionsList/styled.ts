@@ -7,8 +7,4 @@ export const Wrapper = styled(Column)``;
 
 export const StyledTransaction = styled(Transaction)`
   margin-top: 12px;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `;

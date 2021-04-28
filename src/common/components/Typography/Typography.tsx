@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import T from './styled';
 
-enum VarianMappings {
+enum VariantMappings {
   h1 = 'h1',
   h2 = 'h2',
   body = 'p',
@@ -11,7 +11,7 @@ enum VarianMappings {
 }
 
 export interface IProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: keyof typeof VarianMappings;
+  variant?: keyof typeof VariantMappings;
   color?: 'primary' | 'secondary' | 'text' | 'error';
   shade?: 'main' | 'light';
   fontWeight?: 'normal' | 'bold';
@@ -30,7 +30,7 @@ const Typography = ({
   children,
   ...props
 }: IProps) => {
-  const tag = VarianMappings[variant] ? VarianMappings[variant] : 'p';
+  const tag = VariantMappings[variant] ? VariantMappings[variant] : 'p';
   const classes = clsx(
     className,
     variant,

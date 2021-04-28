@@ -1,16 +1,16 @@
-import React, { useState, useContext, useMemo, useEffect } from 'react';
+import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import CheckIcon from 'remixicon-react/CheckLineIcon';
 import clsx from 'clsx';
 
 import { IStoreContext, StoreContext } from 'context/Store';
+import { IAccount } from 'common/types/account';
+import { searchList, highlightQuery } from 'common/utils';
+import { Column } from 'common/styles/layout';
 import Modal from 'common/components/Modal';
 import SearchInput from 'common/components/SearchInput';
 import RoundedFlag from 'common/components/RoundedFlag';
 import Typography from 'common/components/Typography';
-import { Column } from 'common/styles/layout';
-import { IAccount } from 'common/types/account';
-import { searchList, highlightQuery } from 'common/utils';
-import { Wrapper, CurrenciesList, Currency } from './styled';
+import { Wrapper, AccountsList, Account } from './styled';
 
 interface IProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const CurrencyModal = ({
+const AccountsModal = ({
   isOpen,
   selectedAccount,
   onSelectAccount,
@@ -28,6 +28,7 @@ const CurrencyModal = ({
   const { accounts } = useContext<IStoreContext>(StoreContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
+  const timeoutId = useRef(null);
 
   const filteredAccounts = useMemo<IAccount[]>(() => {
     if (!searchTerm) return accounts;
@@ -38,11 +39,13 @@ const CurrencyModal = ({
   useEffect(() => {
     if (!isOpen) setSearchTerm('');
     if (isOpen !== internalIsOpen) setInternalIsOpen(isOpen);
+
+    return () => timeoutId.current && clearTimeout(timeoutId.current);
   }, [isOpen]);
 
   const closeModal = () => {
     setInternalIsOpen(false);
-    setTimeout(onClose, 250);
+    timeoutId.current = setTimeout(onClose, 250);
   };
 
   return (
@@ -56,9 +59,9 @@ const CurrencyModal = ({
           autoFocus
           className="search-input"
         />
-        <CurrenciesList role="list">
+        <AccountsList role="list">
           {filteredAccounts.map(account => (
-            <Currency
+            <Account
               key={account.id}
               htmlFor={account.id}
               className={clsx({
@@ -103,12 +106,12 @@ const CurrencyModal = ({
                 </Column>
                 <CheckIcon className="check-icon" />
               </div>
-            </Currency>
+            </Account>
           ))}
-        </CurrenciesList>
+        </AccountsList>
       </Wrapper>
     </Modal>
   );
 };
 
-export default CurrencyModal;
+export default AccountsModal;
