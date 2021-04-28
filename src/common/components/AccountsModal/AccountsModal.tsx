@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useEffect, useRef } from 'react';
 import CheckIcon from 'remixicon-react/CheckLineIcon';
 import clsx from 'clsx';
 
-import { IStoreContext, StoreContext } from 'context/Store';
+import { IStoreContext, StoreContext } from 'contexts/Store';
 import { IAccount } from 'common/types/account';
 import { searchList, highlightQuery } from 'common/utils';
 import { Column } from 'common/styles/layout';

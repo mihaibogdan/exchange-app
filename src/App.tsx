@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ThemeProvider from 'context/Theme';
-import StoreProvider from 'context/Store';
-import ExchangeRatesProvider from 'context/ExchangeRates';
+import ThemeProvider from 'contexts/Theme';
+import StoreProvider from 'contexts/Store';
+import ExchangeRatesProvider from 'contexts/ExchangeRates';
 import GlobalStyles from 'common/styles/globalStyles';
 
 import Settings from 'common/components/Settings';

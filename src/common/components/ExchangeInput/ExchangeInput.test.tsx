@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { IAccount } from 'common/types/account';
-import { StoreContext } from 'context/Store';
+import { StoreContext } from 'contexts/Store';
 import { renderWithTheme } from 'common/utils/jest';
 import { ExchangeAccountType } from 'common/types/exchanges';
 import { getCurrencySymbol } from 'common/utils/currencies';

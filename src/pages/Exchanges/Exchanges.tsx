@@ -4,7 +4,7 @@ import ExchangeWidget from 'common/components/ExchangeWidget';
 import {
   ExchangeRatesContext,
   IExchangeRatesContext,
-} from 'context/ExchangeRates';
+} from 'contexts/ExchangeRates';
 import { Container } from 'common/styles/layout';
 import Loader from 'common/components/Loader';
 import { StyledTransactionsList } from './styled';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import ThemeProvider from 'context/Theme';
+import ThemeProvider from 'contexts/Theme';
 import { renderWithTheme } from 'common/utils/jest';
 import { THEME } from 'common/constants/theme';
 import Settings from './Settings';

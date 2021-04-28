@@ -9,7 +9,7 @@
     "baseUrl": "src",
     "paths": {
       "common/*": ["common/*"],
-      "context/*": ["context/*"],
+      "contexts/*": ["contexts/*"],
       "themes/*": ["themes/*"],
       "pages/*": ["pages/*"]
     }

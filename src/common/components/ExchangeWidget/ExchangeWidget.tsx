@@ -5,8 +5,8 @@ import ArrowUpIcon from 'remixicon-react/ArrowUpLineIcon';
 import {
   ExchangeRatesContext,
   IExchangeRatesContext,
-} from 'context/ExchangeRates';
-import { StoreContext, IStoreContext } from 'context/Store';
+} from 'contexts/ExchangeRates';
+import { StoreContext, IStoreContext } from 'contexts/Store';
 import { IAccount } from 'common/types/account';
 import { ExchangeAccountType, ExchangeType } from 'common/types/exchanges';
 import { exchange } from 'common/utils/exchangeRates';

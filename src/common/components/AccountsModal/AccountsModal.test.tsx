@@ -2,7 +2,7 @@ import * as React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { StoreContext } from 'context/Store';
+import { StoreContext } from 'contexts/Store';
 import { IAccount } from 'common/types/account';
 import { renderWithTheme } from 'common/utils/jest';
 import AccountsModal from './AccountsModal';

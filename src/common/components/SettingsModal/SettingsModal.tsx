@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import MoonIcon from 'remixicon-react/MoonFillIcon';
 
-import { ThemeContext, IThemeContext } from 'context/Theme';
+import { ThemeContext, IThemeContext } from 'contexts/Theme';
 import Modal from 'common/components/Modal';
 import Typography from 'common/components/Typography';
 import Toggle from 'common/components/Toggle';

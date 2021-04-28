@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { IStoreContext, StoreContext } from 'context/Store';
+import { IStoreContext, StoreContext } from 'contexts/Store';
 import { ITransaction } from 'common/types/transaction';
 import Typography from 'common/components/Typography';
 import { Wrapper, StyledTransaction } from './styled';

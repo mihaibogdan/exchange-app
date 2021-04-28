@@ -2,8 +2,8 @@ import * as React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { StoreContext } from 'context/Store';
-import ExchangeRatesProvider from 'context/ExchangeRates';
+import { StoreContext } from 'contexts/Store';
+import ExchangeRatesProvider from 'contexts/ExchangeRates';
 import { IAccount } from 'common/types/account';
 import { renderWithTheme } from 'common/utils/jest';
 import { exchange } from 'common/utils/exchangeRates';
