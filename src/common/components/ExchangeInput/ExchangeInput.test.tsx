@@ -98,6 +98,29 @@ describe('ExchangeInput', () => {
     );
   });
 
+  it('should clamp the amount to two decimals', async () => {
+    const onValueChange = jest.fn();
+
+    renderWithTheme(
+      <ExchangeInput
+        account={mockedAccounts[0]}
+        value=""
+        type={ExchangeAccountType.Seller}
+        onValueChange={onValueChange}
+        onAccountChange={jest.fn()}
+      />,
+      { wrapper: Contexts }
+    );
+
+    const amountInput = screen.getByRole('textbox');
+    const amount = '100.13232';
+    userEvent.type(amountInput, amount);
+
+    expect(amountInput).toHaveValue(
+      `-${100.13} ${getCurrencySymbol(mockedAccounts[0].currency)}`
+    );
+  });
+
   it('should be able to select GBP account', async () => {
     const onAccountChange = jest.fn();
 
