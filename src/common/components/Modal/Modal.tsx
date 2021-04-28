@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import CloseIcon from 'remixicon-react/CloseLineIcon';
 
 import { ModalWithTransition, Container, CloseButton } from './styled';
-interface IProps {
+interface IProps extends React.HTMLAttributes<HTMLElement> {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface IProps {
 
 const TIMEOUT = 250;
 
-const Modal = ({ isOpen, onClose, children }: IProps) => {
+const Modal = ({ isOpen, onClose, children, ...props }: IProps) => {
   const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const Modal = ({ isOpen, onClose, children }: IProps) => {
       classNames="grow"
       unmountOnExit
       timeout={TIMEOUT}
+      {...props}
     >
       <ModalWithTransition>
         <Container>

@@ -8,7 +8,7 @@ import { Row } from 'common/styles/layout';
 import { formatNumber } from 'common/utils/numbers';
 import { getCurrencySymbol } from 'common/utils/currencies';
 import Typography from 'common/components/Typography';
-import CurrencyModal from 'common/components/CurrencyModal';
+import AccountsModal from 'common/components/AccountsModal';
 import { Wrapper, AccountButton, BalanceButton, NumberInput } from './styled';
 
 interface IProps {
@@ -72,7 +72,7 @@ const ExchangeInput = ({
           </Typography>
         )}
       </Row>
-      <CurrencyModal
+      <AccountsModal
         isOpen={isChangingCurrency}
         onClose={() => setIsChangingCurrency(false)}
         selectedAccount={account}

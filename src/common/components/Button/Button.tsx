@@ -18,7 +18,7 @@ const Button = ({
   children,
   ...props
 }: IProps) => {
-  const classes = clsx(variant, `color-${color}`, className, {
+  const classes = clsx(`variant-${variant}`, `color-${color}`, className, {
     small,
   });
 

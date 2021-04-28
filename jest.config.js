@@ -22,11 +22,7 @@ module.exports = {
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ['node_modules'],
 
-  setupFiles: [
-    '<rootDir>/enzyme.config.js',
-    '<rootDir>/src/__mocks__/jest.mocks.ts',
-  ],
+  setupFiles: ['<rootDir>/src/__mocks__/jest.mocks.ts'],
 
-  // A list of paths to snapshot serializer modules Jest should use for snapshot testing.
-  snapshotSerializers: ['<rootDir>/node_modules/enzyme-to-json/serializer'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
 };

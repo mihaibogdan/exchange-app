@@ -21,7 +21,7 @@ const RoundedFlag = ({ country, size = 60 }: IProps) => {
         ImportedIconRef.current = namedImport;
         setIsLoading(false);
       } catch (err) {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
     importFlag();

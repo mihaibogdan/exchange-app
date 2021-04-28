@@ -16,7 +16,7 @@ describe('Exchange rates utils', () => {
     const input = 1;
     const result = exchange(input, 'USD', 'USD', exchangeRates);
 
-    expect(result).toBe(1);
+    expect(result).toBe('1');
   });
 
   it('should correctly convert GBP to EUR', () => {

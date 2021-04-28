@@ -1,35 +1,34 @@
 import * as React from 'react';
+import { screen } from '@testing-library/react';
 
-import { mountWithTheme } from 'common/utils/jest';
+import { renderWithTheme } from 'common/utils/jest';
 import Typography from './Typography';
 
 beforeEach(() => window.localStorage.clear());
 
 describe('Typography', () => {
   it('should render the text', () => {
-    const typography = mountWithTheme(<Typography>Typography!</Typography>);
-    expect(typography.text()).toBe('Typography!');
+    renderWithTheme(<Typography>Typography!</Typography>);
+    expect(screen.getByText('Typography!')).toHaveTextContent('Typography!');
   });
 
   it('should render a paragraph as default', () => {
-    const typography = mountWithTheme(<Typography>Typography!</Typography>);
-
-    expect(typography.find('p').exists()).toBeTruthy();
+    renderWithTheme(<Typography>Typography!</Typography>);
+    const paragraph = screen.getByText('Typography!') as HTMLElement;
+    expect(paragraph.tagName).toBe('P');
   });
 
   describe('prop: color', () => {
     it('should have color text as default', () => {
-      const typography = mountWithTheme(<Typography>Typography!</Typography>);
+      renderWithTheme(<Typography>Typography!</Typography>);
 
-      expect(typography.find('p').hasClass('color-text')).toBeTruthy();
+      expect(screen.getByText('Typography!')).toHaveClass('color-text');
     });
 
     it('should be able to accept a color prop', () => {
-      const typography = mountWithTheme(
-        <Typography color="primary">Typography!</Typography>
-      );
+      renderWithTheme(<Typography color="primary">Typography!</Typography>);
 
-      expect(typography.find('p').hasClass('color-primary')).toBeTruthy();
+      expect(screen.getByText('Typography!')).toHaveClass('color-primary');
     });
   });
 });

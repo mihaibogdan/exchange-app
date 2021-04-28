@@ -20,10 +20,12 @@ const SearchInput = ({
     <Wrapper {...props}>
       <SearchIcon className={clsx('search-icon', value === '' && 'empty')} />
       <StyledInput
+        type="text"
         value={value}
         onChange={onChange}
         placeholder="Search"
         autoFocus={autoFocus}
+        aria-label="search"
       />
     </Wrapper>
   );

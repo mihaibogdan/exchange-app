@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useEffect } from 'react';
 import CheckIcon from 'remixicon-react/CheckLineIcon';
 import clsx from 'clsx';
 
-import { StoreContext, IStoreContext } from 'context/Store';
+import { IStoreContext, StoreContext } from 'context/Store';
 import Modal from 'common/components/Modal';
 import SearchInput from 'common/components/SearchInput';
 import RoundedFlag from 'common/components/RoundedFlag';
@@ -47,33 +47,35 @@ const CurrencyModal = ({
 
   return (
     <Modal isOpen={internalIsOpen} onClose={closeModal}>
-      <Wrapper>
+      <Wrapper data-testid="currency-modal">
         <SearchInput
           value={searchTerm}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
-            setSearchTerm(e.currentTarget.value);
+            setSearchTerm((e.target as HTMLInputElement).value);
           }}
           autoFocus
           className="search-input"
         />
-        <CurrenciesList>
+        <CurrenciesList role="list">
           {filteredAccounts.map(account => (
             <Currency
               key={account.id}
               htmlFor={account.id}
               className={clsx({
-                active: account.id === selectedAccount.id,
+                active: account.id === selectedAccount?.id,
               })}
+              role="listitem"
             >
               <input
                 type="checkbox"
                 id={account.id}
-                checked={account.id === selectedAccount.id}
+                checked={account.id === selectedAccount?.id}
                 name="currency"
                 onChange={() => {
                   onSelectAccount(account);
                   closeModal();
                 }}
+                aria-label={account.currency}
               />
               <div className="content">
                 <RoundedFlag country={account.countryCode} />

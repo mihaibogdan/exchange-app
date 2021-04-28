@@ -9,7 +9,7 @@ export const Button = styled.button`
   margin: 0;
   transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1);
 
-  &.contained {
+  &.variant-contained {
     padding: 22px;
     text-align: center;
     font-size: 24px;
@@ -27,11 +27,11 @@ export const Button = styled.button`
     }
   }
 
-  &.empty {
+  &.variant-empty {
     padding: 2px 6px;
   }
 
-  &.icon {
+  &.variant-icon {
     background-color: ${({ theme }) => theme.palette.background.light};
 
     width: 64px;

@@ -18,7 +18,12 @@
     "ecmaVersion": 2021,
     "sourceType": "module"
   },
-  "plugins": ["react-hooks", "@typescript-eslint"],
+  "plugins": [
+    "react-hooks",
+    "@typescript-eslint",
+    "jest-dom",
+    "testing-library"
+  ],
   "rules": {
     "no-unused-vars": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
