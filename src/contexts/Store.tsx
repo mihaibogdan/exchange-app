@@ -122,18 +122,18 @@ const StoreContextProvider = ({ children }: IProps) => {
         })
       );
 
-      // setTransactions([
-      //   {
-      //     id: uuidv4(),
-      //     timestamp: Date.now(),
-      //     mainCurrency: main.account.currency,
-      //     mainAmount: main.exchangeAmount,
-      //     secondaryCurrency: secondary.account.currency,
-      //     secondaryAmount: secondary.exchangeAmount,
-      //     type,
-      //   },
-      //   ...transactions,
-      // ]);
+      setTransactions([
+        {
+          id: uuidv4(),
+          timestamp: Date.now(),
+          mainCurrency: main.account.currency,
+          mainAmount: main.exchangeAmount,
+          secondaryCurrency: secondary.account.currency,
+          secondaryAmount: secondary.exchangeAmount,
+          type,
+        },
+        ...transactions,
+      ]);
     },
     [accounts, transactions]
   );
