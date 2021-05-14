@@ -29,7 +29,7 @@ const ExchangeRatesContextProvider = ({ children }: IProps) => {
         setExchangeRates({ base: 'USD', rates: {} });
       }
     },
-    10000,
+    null,
     true
   );
 

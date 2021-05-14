@@ -1,9 +1,11 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IAccount } from 'common/types/account';
 import { ITransaction } from 'common/types/transaction';
 import { ExchangeType, IExchangeMember } from 'common/types/exchanges';
+import { API_BASE_URL } from 'common/constants/api';
+
 interface IProps {
   children: React.ReactNode;
 }
@@ -16,6 +18,7 @@ export interface IStoreContext {
     secondary: IExchangeMember,
     type: ExchangeType
   ) => void;
+  refreshTransactions: (startDate: string, endDate: string) => void;
 }
 
 const bankAccounts: IAccount[] = [
@@ -76,6 +79,28 @@ const StoreContextProvider = ({ children }: IProps) => {
   const [accounts, setAccounts] = useState<IAccount[]>(bankAccounts);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
 
+  useEffect(() => {
+    const startDate = '2020-01-01-11-00-00';
+    const endDate = '2020-01-01-12-00-00';
+
+    const fetchTransactions = async () => {
+      try {
+        const res = await fetch(
+          `${API_BASE_URL}/from/${startDate}/to/${endDate}`,
+          {
+            method: 'POST',
+          }
+        );
+        const transactions = await res.json();
+        setTransactions(transactions);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
   const exchangeBetweenAccounts = useCallback(
     (main: IExchangeMember, secondary: IExchangeMember, type: ExchangeType) => {
       const sign = type === ExchangeType.Sell ? -1 : 1;
@@ -96,20 +121,36 @@ const StoreContextProvider = ({ children }: IProps) => {
           };
         })
       );
-      setTransactions([
-        {
-          id: uuidv4(),
-          timestamp: Date.now(),
-          mainCurrency: main.account.currency,
-          mainAmount: main.exchangeAmount,
-          secondaryCurrency: secondary.account.currency,
-          secondaryAmount: secondary.exchangeAmount,
-          type,
-        },
-        ...transactions,
-      ]);
+
+      // setTransactions([
+      //   {
+      //     id: uuidv4(),
+      //     timestamp: Date.now(),
+      //     mainCurrency: main.account.currency,
+      //     mainAmount: main.exchangeAmount,
+      //     secondaryCurrency: secondary.account.currency,
+      //     secondaryAmount: secondary.exchangeAmount,
+      //     type,
+      //   },
+      //   ...transactions,
+      // ]);
     },
     [accounts, transactions]
+  );
+
+  const refreshTransactions = useCallback(
+    async (startDate: string, endDate: string) => {
+      try {
+        const res = await fetch(
+          `${API_BASE_URL}/from/${startDate}/to/${endDate}`
+        );
+        const newTransactions = await res.json();
+        setTransactions([...transactions, ...newTransactions]);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [transactions]
   );
 
   const contextValue = useMemo<IStoreContext>(
@@ -117,6 +158,7 @@ const StoreContextProvider = ({ children }: IProps) => {
       accounts,
       transactions,
       exchangeBetweenAccounts,
+      refreshTransactions,
     }),
     [accounts, exchangeBetweenAccounts]
   );

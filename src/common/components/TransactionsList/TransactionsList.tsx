@@ -1,16 +1,33 @@
 import React, { useContext } from 'react';
+import RefreshLineIcon from 'remixicon-react/RefreshLineIcon';
 
 import { IStoreContext, StoreContext } from 'contexts/Store';
 import { ITransaction } from 'common/types/transaction';
 import Typography from 'common/components/Typography';
 import { Wrapper, StyledTransaction } from './styled';
+import { Row } from 'common/styles/layout';
+import Button from '../Button';
 
 const TransactionsList = (props: React.HTMLAttributes<HTMLElement>) => {
-  const { transactions } = useContext<IStoreContext>(StoreContext);
+  const { transactions, refreshTransactions } =
+    useContext<IStoreContext>(StoreContext);
 
   return (
     <Wrapper {...props}>
-      <Typography variant="h2">History</Typography>
+      <Row>
+        <Typography variant="h2">History</Typography>
+        <Button
+          variant="icon"
+          small
+          style={{ marginLeft: 15 }}
+          onClick={() =>
+            refreshTransactions('2020-01-01-12-00-00', '2020-01-01-13-00-00')
+          }
+        >
+          <RefreshLineIcon />
+        </Button>
+      </Row>
+
       {transactions.length === 0 && (
         <Typography shade="light">No transactions for now.</Typography>
       )}
