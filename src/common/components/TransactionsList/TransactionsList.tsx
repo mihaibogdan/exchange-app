@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
-import RefreshLineIcon from 'remixicon-react/RefreshLineIcon';
+// import RefreshLineIcon from 'remixicon-react/RefreshLineIcon';
 
 import { IStoreContext, StoreContext } from 'contexts/Store';
 import { ITransaction } from 'common/types/transaction';
 import Typography from 'common/components/Typography';
-import { Wrapper, StyledTransaction } from './styled';
 import { Row } from 'common/styles/layout';
-import Button from '../Button';
+import { Wrapper, StyledTransaction } from './styled';
+// import Button from '../Button';
 
 const TransactionsList = (props: React.HTMLAttributes<HTMLElement>) => {
-  const { transactions, refreshTransactions } =
-    useContext<IStoreContext>(StoreContext);
+  const { transactions } = useContext<IStoreContext>(StoreContext);
 
   return (
     <Wrapper {...props}>
       <Row>
         <Typography variant="h2">History</Typography>
-        <Button
+        {/* <Button
           variant="icon"
           small
           style={{ marginLeft: 15 }}
@@ -25,7 +24,7 @@ const TransactionsList = (props: React.HTMLAttributes<HTMLElement>) => {
           }
         >
           <RefreshLineIcon />
-        </Button>
+        </Button> */}
       </Row>
 
       {transactions.length === 0 && (
